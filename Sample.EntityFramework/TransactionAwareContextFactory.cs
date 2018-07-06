@@ -24,7 +24,7 @@ namespace Sample.EntityFramework
 
                 var connectionForTransaction = connections.GetOrAdd(currentTransaction, valueFactory: t =>
                 {
-                    WriteLine("    - Creating connection for transaction " + t.TransactionInformation.LocalIdentifier, ConsoleColor.DarkGray);
+                    WriteLine("    - Creating connection for transaction " + t, ConsoleColor.DarkGray);
 
                     var connection = new SqlConnection(@"Server=(localdb)\mssqllocaldb;Database=Sample.db;Trusted_Connection=True;");
                     connection.Open();
@@ -32,7 +32,7 @@ namespace Sample.EntityFramework
                     t.TransactionCompleted += (s, e) =>
                     {
                         connection.Close();
-                        WriteLine("    - Connection closed for transaction " + t.TransactionInformation.LocalIdentifier, ConsoleColor.DarkGray);
+                        WriteLine("    - Connection closed for transaction " + t, ConsoleColor.DarkGray);
                     };
 
                     return connection;

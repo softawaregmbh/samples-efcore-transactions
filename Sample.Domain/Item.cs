@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sample.Domain
+﻿namespace Sample.Domain
 {
     public class Item
     {

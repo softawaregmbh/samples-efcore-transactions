@@ -1,10 +1,9 @@
-﻿using static System.Console;
-using static Sample.Domain.Console;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
 using Sample.BusinessLogic;
 using Sample.EntityFramework;
-using System;
+using static System.Console;
+using static Sample.Domain.Console;
 
 namespace Sample.UI
 {
