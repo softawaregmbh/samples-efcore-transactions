@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Transactions;
+using static Sample.Domain.Console;
 
 namespace Sample.EntityFramework
 {
@@ -19,10 +20,11 @@ namespace Sample.EntityFramework
             }
             else
             {
-                Console.WriteLine(" - Trying to get connection for transaction " + currentTransaction.TransactionInformation.LocalIdentifier);
+                WriteLine("  - Trying to find connection for transaction " + currentTransaction, ConsoleColor.DarkGray);
+
                 var connectionForTransaction = connections.GetOrAdd(currentTransaction, valueFactory: t =>
                 {
-                    Console.WriteLine("  - Creating connection for transaction " + t.TransactionInformation.LocalIdentifier);
+                    WriteLine("    - Creating connection for transaction " + t.TransactionInformation.LocalIdentifier, ConsoleColor.DarkGray);
 
                     var connection = new SqlConnection(@"Server=(localdb)\mssqllocaldb;Database=Sample.db;Trusted_Connection=True;");
                     connection.Open();
@@ -30,7 +32,7 @@ namespace Sample.EntityFramework
                     t.TransactionCompleted += (s, e) =>
                     {
                         connection.Close();
-                        Console.WriteLine("  - Connection closed for transaction " + t.TransactionInformation.LocalIdentifier);
+                        WriteLine("    - Connection closed for transaction " + t.TransactionInformation.LocalIdentifier, ConsoleColor.DarkGray);
                     };
 
                     return connection;

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using static System.Console;
+using static Sample.Domain.Console;
 using System.Linq;
 using System.Threading.Tasks;
 using Sample.BusinessLogic;
 using Sample.EntityFramework;
+using System;
 
 namespace Sample.UI
 {
@@ -13,39 +15,39 @@ namespace Sample.UI
             var manager = new ItemManager(TransactionAwareContextFactory.CreateContext);
             var logic = new ItemLogic(manager);
 
-            Console.WriteLine("Use the following commands:");
-            Console.WriteLine();
-            Console.WriteLine("\"on\": Enable transactions");
-            Console.WriteLine("\"off\": Disable transactions");
-            Console.WriteLine("\"list\": List items in database");
-            Console.WriteLine("\"clear\": Remove all items");
-            Console.WriteLine();
-            Console.WriteLine("All other commands will be interpreted as one or more item names that should be added to the database.");
+            WriteLine("Use the following commands:");
+            WriteLine();
+            WriteLine("\"on\": Enable transactions");
+            WriteLine("\"off\": Disable transactions");
+            WriteLine("\"list\": List items in database");
+            WriteLine("\"clear\": Remove all items");
+            WriteLine();
+            WriteLine("All other commands will be interpreted as one or more item names that should be added to the database.");
 
             while (true)
             {
-                Console.WriteLine();
-                var command = Console.ReadLine();
+                WriteLine();
+                var command = ReadLine();
 
                 switch (command)
                 {
                     case "on":
                         logic.UseTransactions = true;
-                        Console.WriteLine("Transactions are ENABLED");
+                        WriteLine("Transactions are ENABLED.");
                         break;
 
                     case "off":
                         logic.UseTransactions = false;
-                        Console.WriteLine("Transactions are DISABLED");
+                        WriteLine("Transactions are DISABLED.");
                         break;
 
                     case "list":
-                        Console.WriteLine(string.Join(' ', await manager.GetItemsAsync()));
+                        WriteLine(string.Join(' ', await manager.GetItemsAsync()));
                         break;
 
                     case "clear":
                         await manager.ClearItemsAsync();
-                        Console.WriteLine("Done.");
+                        WriteLine("Done.");
                         break;
 
                     default:
@@ -53,12 +55,12 @@ namespace Sample.UI
                         {
                             var names = command.Split(' ');
                             await logic.AddItemsAsync(names);
-                            Console.WriteLine($"Added {names.Length} item(s) to the database");
+                            WriteLine($"Added {names.Length} item(s) to the database");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("Error adding items:");
-                            Console.WriteLine(e);
+                            WriteLine("Error adding items:");
+                            WriteLine("  " + e.Message, ConsoleColor.DarkGray);
                         }
 
                         break;

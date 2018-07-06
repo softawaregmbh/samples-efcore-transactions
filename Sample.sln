@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.EntityFramework", "Sample.EntityFramework\Sample.EntityFramework.csproj", "{F96CBFDB-88A0-4A3C-AA34-6808E99D911C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.EntityFramework", "Sample.EntityFramework\Sample.EntityFramework.csproj", "{F96CBFDB-88A0-4A3C-AA34-6808E99D911C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.BusinessLogic", "Sample.BusinessLogic\Sample.BusinessLogic.csproj", "{8ABA28B8-8DE9-4133-995B-681DB0B88DDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.BusinessLogic", "Sample.BusinessLogic\Sample.BusinessLogic.csproj", "{8ABA28B8-8DE9-4133-995B-681DB0B88DDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.UI", "Sample.UI\Sample.UI.csproj", "{A54B6AFC-110F-4E46-A5EE-30D947DE6EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.UI", "Sample.UI\Sample.UI.csproj", "{A54B6AFC-110F-4E46-A5EE-30D947DE6EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Domain", "Sample.Domain\Sample.Domain.csproj", "{BF7D2B31-1571-43E8-AE76-BD4B0EA24EF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Domain", "Sample.Domain\Sample.Domain.csproj", "{BF7D2B31-1571-43E8-AE76-BD4B0EA24EF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
